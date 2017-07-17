@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+    <head>
+        <title>javascript color guessing game</title>
+            <script>
+            
+            var finish = false;
+            var choosecolor;
+            var selectedColor;
+            var guess = 0;
+            var color = ["Red","Yellow","Green","Blue","Cyan","Purple","Silver","Violet","Orange"];
+            // color.sort()
+            function do_game(){
+                var random_number = Math.random()*10;
+                target_Index = Math.floor(random_number);
+                var target = color.sort()[target_Index]
+                console.log(target)
+                
+                while(!finish){
+                    choosecolor = prompt("Choose color from: "+ color.sort());
+                    guess_input = color.indexOf(choosecolor);
+                    guess +=1; 
+                    finish = correctGuess(choosecolor);
+                }
+
+                if (choosecolor == target){
+                mybody=document.getElementsByTagName("body")[0];
+                mybody.style.background = target
+                }
+            }
+            
+            function guessnum(){
+                if (guess>1){
+                    return (" guesses!")
+                 } 
+                 else{
+                    return (" guess!")
+                 }
+            }
+
+            function correctGuess(choosecolor){
+                // console.log(choosecolor)
+                if (color.includes(choosecolor)== false){
+                    alert("I don't recognize your choosen color!"+"\n\n"+"Please choose color from the list:" + "\n\n"+ color )
+                    return false;
+                }
+
+                if (guess_input>target_Index){
+                    alert("Your input is alphabetically higher than mine!")
+                    return false;
+                }
+
+                if (guess_input<target_Index){
+                    alert("Your input is alphabetically lower than mine!")
+                    return false;
+                 }
+                 
+                setTimeout(function(){alert("Congratulations!! you have choosen the correct color, "+ choosecolor + " in "+ guess + guessnum()+"\n\n"+ "Please check background color")},150);
+               
+                return true;  
+            }
+            </script>
+    </head>
+
+    <body onload="do_game()"> 
+        
+    </body>
+</html>

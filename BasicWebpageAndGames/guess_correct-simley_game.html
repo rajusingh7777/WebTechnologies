@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang= 'en'>
+    <head>
+        <h1>Machting Game</h1>
+        <style>
+            img {position: absolute}
+            div {position: absolute; width: 700px; height: 500px;}
+            #rightSide { left: 700px; border-left: 1px solid black;}
+        </style>
+      <script>
+            var numberOfFace = 5;
+            var theLeftSide;
+            var theRightSide;
+            function generateFace(){
+                theLeftSide = document.getElementById("leftSide")
+                for (i=1;i<=numberOfFace;i++){
+                    theLeftSide.appendChild(createElement())
+                }
+                
+                theRightSide= document.getElementById("rightSide")
+                var leftSideImages=theLeftSide.cloneNode(true);
+                leftSideImages.removeChild(leftSideImages.lastChild)
+                theRightSide.appendChild(leftSideImages);
+
+                theLeftSide.lastChild.onclick = function nextlevel(event){
+                while(theLeftSide.firstChild){
+                    theLeftSide.removeChild(theLeftSide.firstChild)
+                }
+
+                while(theRightSide.firstChild){
+                    theRightSide.removeChild(theRightSide.firstChild)
+                }
+                event.stopPropagation();
+                numberOfFace +=5
+                generateFace();
+                }
+
+                var theBody = document.getElementsByTagName("body")[0];
+                theBody.onclick = function gameOver() {
+                    alert("Game Over!"+ "\n\n" + "You have selected wrong smiley");
+                    theBody.onclick = null;
+                    theLeftSide.lastChild.onclick = null;
+                }
+            }
+
+            function createElement(){
+                var im= document.createElement("img");
+                var dp= document.getElementById("leftSide");
+                im.src="http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png";
+                im.style.top = Math.floor(Math.random()*400)+1+"px";
+                im.style.left = Math.floor(Math.random()*600)+1+"px";
+                var smiley=dp.appendChild(im);
+                return smiley;
+            }
+            
+        </script>
+    </head>
+    <body onload="generateFace()">
+        <p>Click on the extra simling face on the left</p>
+        <div id = "leftSide">
+        </div>
+        
+        <div id = "rightSide" >    
+        </div>
+    </body>
+</html>

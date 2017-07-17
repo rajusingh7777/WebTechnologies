@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+    <head>
+        <h1>Please Enter Your Details For Our Dating Website</h1>
+    </head>
+    
+    <style>
+    fieldset {background:lightyellow; border: 10px solid yellow; margin-bottom: 10px; width: 720px}
+    label {width: 180px; display:inline-block; text-align: right; vertical-align: top}
+    div.radio label:nth-child(2n+3) {width: auto; display:inline-block}
+    div.checkbox label:nth-child(2n+3) {width: auto; display:inline-block}
+    label.checkbox {width: auto; display:inline-block}
+    
+    .lowerranglabel {width:40px; display: inline-block; text-align: center; vertical-align: top; color: white;background-color: red}
+    .upperranglabel {width:40px; display: inline-block; text-align: center; vertical-align: top; color: white;background-color: purple}
+    
+    textarea {width: 360px;height: 50px}
+    </style>
+
+    <body>
+       <form action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php" method="post" enctype="multipart/form-data">
+           <fieldset>
+               <legend>Your Face</legend>
+               <label for="Choosefile">Your image:</label>
+               <input type=file id="Choosefile" name="Choose File" placeholder="No file choosen" required><br>
+               <label for="preview">Image preview:</label>
+               <img id="preview"/> 
+           </fieldset>
+           <fieldset>
+               <legend>General Details</legend>
+               <label for="name">Name:</label>
+               <input type="text" id="name" name="name" required><br>
+               <div class="radio">
+                    <label for="name">Gender:</label>
+                    <input type="radio" id="Mgender" name="gender" required ><label for="Mgender">Male</label>
+                    <input type="radio" id="Fgender" name="gender" ><label for="Fgender">Female</label> <br>
+               </div>
+               <label for="age">Age:</label>
+               <input type="number" id="age" name="age" required><br>
+               <label for="DOB">Date of birth:</label>
+               <input type="date"  id="DOB" name="DOB"><br>
+               <label for="favcolor"> Favorite color:</label>
+               <input type="color" id="favcolor" name="favcolor"><br>
+               <label for="WhichCountry">Which country:</label>
+               <select name="Country" id="WhichCountry" name="WhichCountry">
+                   <option value="Select City">Select Country:</option>
+                   <option value="IND">India</option>
+                   <option value="USA">USA</option>
+                   <option value="UK">UK</option>
+                   <option value="CHN">China</option>
+                   <option value="AUS">Australia</option>
+               </select>
+           </fieldset>
+           <fieldset>
+               <legend>Your Indicators</legend>
+               <label for="height">Height:</label>
+               <span class=lowerranglabel>Short</span> <input type="range" min="0" max="100" step="5" value=50 id="height" name="height"> <span class=upperranglabel>Tall</span><br>
+               <label for="salary">Salary:</label>
+               <span class=lowerranglabel>Poor</span> <input type="range" min="0"  max="100" step="2" value=50 id="salary" name="salary"> <span class=upperranglabel>Rich</span>
+           </fieldset>
+           <fieldset>
+               <legend>Your Contact Information</legend>
+               <label for="emailid">Email:</label>
+               <input type="email" id="emailid" name="emailid" required><br>
+               <label for="mobile">Mobile:</label>
+               <input type="tel" id="mobile" name="mobile"><br>
+               <label for="address">Address:</label>
+               <textarea rows="4" cols="50" id="address" name= "address" placeholder="Enter your Address"></textarea><br>
+               <div class="checkbox">
+                    <label for="name">Method to contact you:</label>
+                    <input  type="checkbox" id="email" name="email"><label for="email">Email</label>
+                    <input  type="checkbox" id="whtap" name="whtap"><label for="whtap">Whatsapp</label>
+                    <input  type="checkbox" id="In-aptChat" name="In-aptChat"><label for="In-aptChat">In-aptChat</label>
+               </div>
+           </fieldset> 
+        <input type="submit" value="Submit">
+       </form>
+       <script src="https://www.cse.ust.hk/~rossiter/dating_web_site.js"></script>   
+    </body>
+</html>
